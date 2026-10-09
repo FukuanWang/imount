@@ -1,0 +1,2 @@
+pymobiledevice3>=11.19
+typer>=0.12

@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "imount"
+version = "0.1.0"
+description = "Mount an iOS device's DCIM photos/videos as a macOS volume (no kernel extension)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "imount" }]
+keywords = ["ios", "iphone", "ipad", "dcim", "afc", "webdav", "mount", "macos"]
+classifiers = [
+    "Environment :: Console",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: System :: Filesystems",
+]
+dependencies = [
+    "pymobiledevice3>=11.19",
+    "typer>=0.12",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "pytest-asyncio>=0.23"]
+
+[project.scripts]
+imount = "imount.cli:main"
+
+[tool.setuptools]
+packages = ["imount", "imount.backends"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
